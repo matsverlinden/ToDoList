@@ -18,3 +18,9 @@ CREATE TABLE `taken`(
 	`taak_datum` DATE  NOT NULL,
 	PRIMARY KEY(`taak_id`)
 );
+
+INSERT INTO `lijsten` (`lijst_naam`)
+VALUES ('Programmeren');
+
+INSERT INTO `taken` (`taak_naam`, `taak_beschrijving`, `taak_status`, `taak_datum`)
+VALUES ('Todo', 'Maak de opdracht To do list af', 'bezig', '2019-02-27');
