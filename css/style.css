@@ -34,15 +34,29 @@ tr:nth-child(odd){
 	text-align: center;
 }
 #mainCreate{
-
 	margin: 0 auto;
 	width: 40%;
 	border: 1px solid black;
+	margin-top: 50px;
 }
 #createH1{
+	text-align: center;
 	width: 100%;
 	border: 0px 0px 0px 1px solid black;
 }
 label{
-	margin-left: 100px;
+	margin-left: 20%;
+}
+.radio{
+	margin-left: 30%;
+}
+.text{
+	text-align: center;
+}
+#lijstenMain{
+	text-align: center;
+}
+#lijstSub{
+	width: 200px;
+	height: 200px;
 }
