@@ -1,10 +1,14 @@
 <?php
+session_start();
 include('dataconnect.php');
 $connection = mysqli_connect($server, $user, $pass, $db);
 if (mysqli_connect_errno()) {
 	printf("Connection failed: %s\n", mysqli_connect_error());
 	exit();
 }
+// $lijst_id = $_GET['lijst_id'];
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,9 +18,14 @@ if (mysqli_connect_errno()) {
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 		<meta charset="utf-8">
 	</head>
-	<body>
-		<main>
+	<body id="takenBody">
+		<header>
+			<a href="index.php"><i id="pijl" class="fas fa-arrow-left"></i></a>
+			<a href="create/create.php">
+			<i id="plus" class="fas fa-plus-circle"></i></a>
 			<center><h1>To do list</h1></center><hr>
+		</header>	
+			<main>
 			<table>
 				<tr>
 					<th>Naam</th>
@@ -29,6 +38,7 @@ if (mysqli_connect_errno()) {
 					$query = "SELECT * FROM taken";
 					$taken = mysqli_query($connection, $query);
 					while ($row = mysqli_fetch_object($taken)) {
+						$taak_id = $row->taak_id;
 						$naam = $row->taak_naam;
 						$beschrijving = $row->taak_beschrijving;
 						$status = $row->taak_status;
@@ -37,16 +47,15 @@ if (mysqli_connect_errno()) {
 					<td><?php echo $naam ?></td>
 					<td><?php echo $beschrijving ?></td>
 					<td><?php echo $status ?></td>
-					<td><i id="edit" class="fas fa-pencil-alt"></i></td>
-					<td><i id="delete" class="fas fa-trash-alt"></i></td>
+					<td><a href="edit/edit.php"><i id="edit" class="fas fa-pencil-alt"></i></a></td>
+					<td><a href="delete.php?taken<?php echo $taak_id ?> "><i id="delete" class="fas fa-trash-alt"></i></a></td>
+
 				</tr>
 				<?php
 				}
 				?>
 			</table>
-			<form action="create/create.php">
-				<input id="submit" type="submit" name="submit">
-			</form>
+
 		</main>
 	</body>
 </html>
