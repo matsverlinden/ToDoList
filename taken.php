@@ -6,9 +6,7 @@ if (mysqli_connect_errno()) {
 	printf("Connection failed: %s\n", mysqli_connect_error());
 	exit();
 }
-// $lijst_id = $_GET['lijst_id'];
-
-
+	$lijst_id = $_GET['lijst_id'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,9 +19,14 @@ if (mysqli_connect_errno()) {
 	<body id="takenBody">
 		<header>
 			<a href="index.php"><i id="pijl" class="fas fa-arrow-left"></i></a>
-			<a href="create/create.php">
+				<center>
+				
+				<h1><a id="deleteTaak" href="delete/lijstDelete.php?lijst_id=<?php echo $lijst_id ?>"><i class="fas fa-minus-square"> </i></a> To do list <a id="editTaak" href="edit/lijstedit.php"> <i class="fas fa-marker"></i></a></h1>
+				
+				</center><hr>
+			<a href="create/create.php?lijst_id=<?php echo $lijst_id?>">
 			<i id="plus" class="fas fa-plus-circle"></i></a>
-			<center><h1>To do list</h1></center><hr>
+
 		</header>	
 			<main>
 			<table>
@@ -35,7 +38,7 @@ if (mysqli_connect_errno()) {
 					<th>Delete</th>
 				</tr>
 				<?php
-					$query = "SELECT * FROM taken";
+					$query = "SELECT * FROM taken WHERE lijst_id = '$lijst_id'";
 					$taken = mysqli_query($connection, $query);
 					while ($row = mysqli_fetch_object($taken)) {
 						$taak_id = $row->taak_id;
@@ -47,15 +50,15 @@ if (mysqli_connect_errno()) {
 					<td><?php echo $naam ?></td>
 					<td><?php echo $beschrijving ?></td>
 					<td><?php echo $status ?></td>
-					<td><a href="edit/edit.php"><i id="edit" class="fas fa-pencil-alt"></i></a></td>
-					<td><a href="delete.php?taken<?php echo $taak_id ?> "><i id="delete" class="fas fa-trash-alt"></i></a></td>
+					<td><a href="edit/edit.php?taak_id=<?php echo $taak_id ?>&lijst_id=<?php echo $lijst_id ?>"><i id="edit" class="fas fa-pencil-alt"></i></a></td>
+					<td><a href="delete/delete.php?taak_id=<?php echo $taak_id ?>&lijst_id=<?php echo $lijst_id ?> "><i id="delete" class="fas fa-trash-alt"></i></a></td>
 
 				</tr>
 				<?php
 				}
+
 				?>
 			</table>
-
 		</main>
 	</body>
 </html>

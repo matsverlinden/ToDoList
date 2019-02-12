@@ -1,3 +1,6 @@
+<?php 
+$lijst_id = $_GET['lijst_id'];
+ ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -7,12 +10,12 @@
 	</head>
 	<body id="createBody">
 		<header>
-			<a href="../taken.php"><i id="pijl" class="fas fa-arrow-left"></i></a>
+			<a href="../taken.php?lijst_id=<?php echo $lijst_id ?>"><i id="pijl" class="fas fa-arrow-left"></i></a>
 			<h1 id="createH1">Toevoegen</h1>
 			<hr>
 		</header>
 			<main id="mainCreate">
-			<form action="createQuery.php" method="POST">
+			<form action="createQuery.php?lijst_id=<?php echo $lijst_id?>" method="POST">
 				<label>Naam:</label>
 				<input class="text" type="text" name="naam"><br>
 				<label>Beschrijving:</label>

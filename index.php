@@ -30,13 +30,10 @@ if (mysqli_connect_errno()) {
 					$lijst_naam = $row->lijst_naam;
 					$lijst_id = $row->lijst_id;
 			?>
-			<form action="taken.php" method="POST">
-				<input id="lijstSub" type="submit" name="submit" value="<?php echo $lijst_naam ?>">
-				<input type="hidden" value="<?php echo $lijst_id ?>" name="<?php echo $lijst_id ?>">
+				<a id="lijstSub" href="taken.php?lijst_id=<?php echo $lijst_id?>"><?php echo $lijst_naam ?></a>
 				<?php
 				}
 				?>
-			</form>
 		</main>
 	</body>
 </html>
