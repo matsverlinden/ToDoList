@@ -1,5 +1,5 @@
 body{
-		background-image: url("../img/driehoek4.png");
+	background-image: url("../img/driehoek4.png");
 	background-repeat: no-repeat;
 	background-size: 100% auto;
 	margin: 0 auto;
@@ -156,4 +156,14 @@ input[type=submit]:hover {
 #editTaak{
 	color: orange;
 	font-size: 70%;
+}
+#orderBtn{
+	border-radius: 15px;
+	width: 120px;
+	height: 35px;
+	margin-left: 10%;
+	background-color: #6fa1f2;
+}
+#orderBtn:hover{
+	background-color: #606ff2;
 }

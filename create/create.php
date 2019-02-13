@@ -20,6 +20,8 @@ $lijst_id = $_GET['lijst_id'];
 				<input class="text" type="text" name="naam"><br>
 				<label>Beschrijving:</label>
 				<input class="text" type="text" name="beschrijving"><br>
+				<label>Verloop datum:</label>
+				<input class="date" type="date" name="tijd"><br>
 				<label>Status:</label><br>
 				<input class="radio" type="radio" name="status" value="Nog niet begonnen">Nog niet begonnen<br>
 				<input class="radio" type="radio" name="status" value="Bezig">Bezig<br>
