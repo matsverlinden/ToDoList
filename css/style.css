@@ -167,3 +167,9 @@ input[type=submit]:hover {
 #orderBtn:hover{
 	background-color: #606ff2;
 }
+#filter{
+	width: 20%;
+	position: absolute;
+	right: 10%;
+	margin-bottom: 10px;
+}

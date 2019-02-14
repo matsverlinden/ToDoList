@@ -14,6 +14,7 @@ if (mysqli_connect_errno()) {
 		<title>To do list</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+		<script src="script.js"></script>
 		<meta charset="utf-8">
 	</head>
 	<body id="takenBody">
@@ -28,7 +29,7 @@ if (mysqli_connect_errno()) {
 			<i id="plus" class="fas fa-plus-circle"></i></a>
 		</header>
 		<main>
-			<input type="text" id="filter" onkeyup="filter()" placeholder="Zoek...">
+			<input type="text" id="filter" onkeyup="filter()" placeholder="Zoek op tijd...">
 
 			<p><button id="orderBtn" onclick="takenTable()">Sorteer op status</button></p>
 			<table id="takenTable">
@@ -62,66 +63,6 @@ if (mysqli_connect_errno()) {
 				}
 				?>
 			</table>
-			<script>
-			function takenTable() {
-			var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-			table = document.getElementById("takenTable");
-			switching = true;
-			dir = "asc";
-			while (switching) {
-			switching = false;
-			rows = table.rows;
-			for (i = 1; i < (rows.length - 1); i++) {
-			shouldSwitch = false;
-			x = rows[i].getElementsByTagName("TD")[4];
-			y = rows[i + 1].getElementsByTagName("TD")[4];
-			if (dir == "asc") {
-			if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-			shouldSwitch= true;
-			break;
-			}
-			}
-			else if (dir == "desc") {
-			if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-			shouldSwitch = true;
-			break;
-			}
-			}
-			}
-			if (shouldSwitch) {
-			rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-			switching = true;
-			switchcount ++;
-			} else {
-			if (switchcount == 0 && dir == "asc") {
-			dir = "desc";
-			switching = true;
-			}
-			}
-			}
-			}
-
-			function filter() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("filter");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("takenTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
-
-			//ZET JS IN APARTE FILE, LEER HET UIT JE HOOFD EN LAAT HET WERKEN!
-			</script>
 		</main>
 	</body>
 </html>
